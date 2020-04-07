@@ -1,0 +1,42 @@
+.main {
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: darken($color: #000000, $amount: 0);
+    text-align: left;
+}
+
+.featured-book {
+    background-color: #faf9f3;
+    padding: 2.5rem;
+    position: relative;
+
+    img {
+        float: left;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 5px;
+    }
+
+    .recommended {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        border-bottom-left-radius: 5px;
+        background-color: $primary;
+    }
+
+    .title {
+        margin-bottom: 0.4rem;
+        font-size: 2rem;
+    }
+
+    .author {
+        padding-bottom: 2rem;
+        font-size: 1.5rem
+    }
+
+    .synopsis {
+        font-size: 1.2rem
+    }
+}
