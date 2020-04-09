@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Vue from 'vue';
 
 export default class HttpService {
 
@@ -8,8 +7,7 @@ export default class HttpService {
   }
 
     static handleHttpError(self, error) {
-
-        Vue.$log.error(error);
+        console.log(self.$buefy, error)
         try {
             self.$buefy.toast.open({
                 duration: 5000,

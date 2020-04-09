@@ -80,9 +80,9 @@
               <span class="position">
                 <span>1</span>
               </span>
-
-              <img class="center" src="../assets/images/02-where.jpg" />
-
+              <div class="image-container">
+                <img class="center" src="../assets/images/02-where.jpg" />
+              </div>
               <div class="book-info">
                 <h3 class="title">Where the Crawdads Sing</h3>
                 <div class="author">Delia Owens</div>
@@ -108,9 +108,9 @@
               <span class="position">
                 <span>2</span>
               </span>
-
-              <img src="../assets/images/03-girl.jpg" />
-
+<div class="image-container">
+              <img class="center" src="../assets/images/03-girl.jpg" />
+</div>
               <div class="book-info">
                 <h3 class="title">
                   Girl, Wash Your Face: Stop Believing the Lies About Who You Are
@@ -137,9 +137,9 @@
               <span class="position">
                 <span>3</span>
               </span>
-
-              <img src="../assets/images/04-educated.jpg" />
-
+<div class="image-container">
+              <img class="center" src="../assets/images/04-educated.jpg" />
+</div>
               <div class="book-info">
                 <h3 class="title">Educated: A Memoir</h3>
                 <div class="author">Tara Westover</div>

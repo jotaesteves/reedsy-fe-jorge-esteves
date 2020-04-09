@@ -7,7 +7,7 @@ export default class BookService {
   }
 
   static async getBooks() {
-    return HttpService.get(`books/`);
+    return HttpService.get(`books`);
   }
 
 }

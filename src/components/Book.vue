@@ -13,7 +13,7 @@
     </div>
 
     <div class="book-page-image">
-
+      <img class="center" :src="bookData.cover">
     </div>
 
     <div class="book-page-synopsis">
