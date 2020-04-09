@@ -1,37 +1,46 @@
 <template>
-<div class="container top-books-page">
-  <div class="columns">
-  <section class="column book-section" v-for="book in bookData" :key="book.id">
-    <div>{{book.title}}</div>
-    <div>{{book.author}}</div>
-    <div>{{book.synopsys}}</div>
-    <div>{{book.upvotes}}</div>
-    <img :src="book.cover" />
-  </section>
+  <div class="container top-books-page">
+    <h1>Top Books</h1>
+    <div class="container columns" v-for="book in bookData" :key="book.id">
+      <section class="columns book-section">
+        <div class="column">
+          <h1 class="title">
+            <a @click="$router.push({ name: 'Book', params: { slug: book.slug } })">
+              {{book.title}}
+            </a>
+          </h1>
+          <h3 class="author">{{book.author}}</h3>
+          <p>{{book.synopsis}}</p>
+          <div>{{book.upvotes}}</div>
+        </div>
+        <div class="column is-one-fifth">
+          <img :src="book.cover" />
+        </div>
+      </section>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import BookService from '../services/bookService';
-import HttpService from '../services/httpService';
+import BookService from "../services/bookService";
+import HttpService from "../services/httpService";
 
 export default {
-  name: 'TopBooks',
+  name: "TopBooks",
   props: {
     msg: String
   },
   data() {
     return {
       bookData: false
-    }
+    };
   },
   created() {
     BookService.getBooks()
-      .then(result => this.bookData = result.data.books)
-      .catch(error => HttpService.handleHttpError(this, error))
+      .then(result => (this.bookData = result.data.books))
+      .catch(error => HttpService.handleHttpError(this, error));
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
