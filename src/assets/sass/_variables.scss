@@ -30,6 +30,9 @@ $link-focus-border: $primary;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
+// backgrounds
+$ligh-yellow: #faf9f3;
+
 h1 {
     font-size: 2rem;
 }
@@ -37,4 +40,9 @@ h1 {
 h2 {
     font-size: 1.8rem;
     font-weight: 800;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
