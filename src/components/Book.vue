@@ -1,28 +1,29 @@
 <template>
-  <div class="book-page">
+  <div class="container book-page">
     <div class="columns">
-      <div class="column title">
-        <h1>{{ bookData.title }}</h1>
-        <h3>{{ bookData.author }}</h3>
+      <div class="column is-three-fifths title">
+        <h1>{{ book.title }}</h1>
+        <h3>{{ book.author }}</h3>
       </div>
 
       <div class="column votes">
-        Upvoted {{ bookData.upvotes }} {{ bookVotesLength ? 'time' : 'times' }}
-        <b-button></b-button>
+        <span>Upvoted {{ book.upvotes }} {{ bookVotesLength ? 'time' : 'times' }}</span>
+        <b-button :class="{active: !book.upvoted}" :disabled="book.upvoted">
+          {{ upvoted(book.upvoted) }}
+        </b-button>
       </div>
     </div>
-
     <div class="book-page-image">
-      <img class="center" :src="bookData.cover">
+      <img class="center" :src="book.cover">
     </div>
 
     <div class="book-page-synopsis">
       <h4>Synopsis</h4>
-      <p>{{ bookData.synopsis }}</p>
+      <p>{{ book.synopsis }}</p>
     </div>
 
     <div class="book-page-rating">
-      <p>Rating: {{ bookData.rating || 0 }} / 10</p>  
+      <p>Rating: {{ book.rating || 0 }} / 10</p>  
     </div>
   </div>
 </template>
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     bookVotesLength() {
-      return this.bookData.upvotes <= 1
+      return this.book.upvotes <= 1
     }
   },
   data() {
@@ -48,33 +49,18 @@ export default {
       synopsisText: '',
       ratingValue: 8.5,
       bookSlug: '',
-      bookData: ''
+      book: ''
     }
   },
   methods: {
+    upvoted(flag) {
+      return flag ? 'Upvoted' : 'Upvote'
+    }
   },
   created() {
     const bookSlug = this.$router.currentRoute.params.slug;
     BookService.getBook(bookSlug)
-      .then(result => this.bookData = result.data)
+      .then(result => this.book = result.data)
   },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
