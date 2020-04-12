@@ -1,23 +1,34 @@
 <template>
   <div class="container top-books-page">
-    <h1>Top Books</h1>
-    <div class="container columns" v-for="book in bookData" :key="book.id">
-      <section class="columns book-section">
+    <h1 class="page-title">Top Books</h1>
+    <div v-for="(book, i) in bookData" :key="book.id">
+      <section class="book-section columns" style="position: relative;">
         <div class="column">
           <h1 class="title">
             <a @click="$router.push({ name: 'Book', params: { slug: book.slug } })">
-              {{book.title}}
+              {{i+1}}. {{book.title}}
             </a>
+            <span class="rating"> ({{book.rating}}/10) </span>
           </h1>
+
           <h3 class="author">{{book.author}}</h3>
-          <p>{{book.synopsis}}</p>
-          <div>{{book.upvotes}}</div>
+          <p class="synopsis">{{synopsis(book.synopsis)}}</p>
+
+          <div class="upvotes">
+            <b-button :class="{active: !book.upvoted}" :disabled="book.upvoted">
+              {{ upvoted(book.upvoted) }}
+            </b-button>
+          <span class="upvotes-count">Upvoted {{book.upvotes}} times</span>
+          </div>
         </div>
         <div class="column is-one-fifth">
-          <img :src="book.cover" />
+          <a @click="$router.push({ name: 'Book', params: { slug: book.slug } })">
+            <img class="center" :src="book.cover" />
+          </a>
         </div>
       </section>
     </div>
+    
   </div>
 </template>
 
@@ -35,28 +46,31 @@ export default {
       bookData: false
     };
   },
+  methods: {
+    synopsis(text) {
+      if(!text) return ''
+      return text.length > 200 ? text.substring(0, 200) + '...' : text;           
+    },
+    upvoted(flag) {
+      return flag ? 'Upvoted' : 'Upvote'
+    }
+  },
   created() {
+    const that = this;
     BookService.getBooks()
-      .then(result => (this.bookData = result.data.books))
+      .then((result) => {
+        result.data.books.map((book) => {
+          console.log(that)
+          console.log(book)
+          book.synopsisShort = that.synopsis(book.synopsis)
+          console.log(book)
+        })
+        this.bookData = result.data.books
+        })
       .catch(error => HttpService.handleHttpError(this, error));
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>

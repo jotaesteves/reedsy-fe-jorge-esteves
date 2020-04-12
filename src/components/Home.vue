@@ -15,7 +15,7 @@
 
             <a class="navbar-item">Just added</a>
 
-            <a class="navbar-item active">Top Books</a>
+            <a class="navbar-item active" @click="$router.push({name: 'TopBooks'})">Top Books</a>
 
             <a class="navbar-item">Upcoming</a>
           </div>

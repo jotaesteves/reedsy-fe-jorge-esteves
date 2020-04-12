@@ -1,16 +1,42 @@
 .top-books-page {
-    background-color: white;
-    border-radius: 1rem;
-    box-shadow: darken($color: #000000, $amount: 0);
+    position: relative;
+    background-color: $light-yellow;
+    -webkit-box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
+    box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 
-    & > h1 {
-        color: $primary;
+    section {
+        padding: 2rem;
+        position: relative;
+    }
+
+    .page-title {
+        color: $button-yellow;
         font-size: 4rem;
         font-weight: 800;
-        margin-bottom: 20px;
+        margin-bottom: 1rem;
         text-align: center;
+    }
+
+    .author {
+        font-weight: 400;
+        padding-bottom: 2rem;
+    }
+}
+
+h1.title > a {
+    color: $dark-yellow;
+}
+
+.columns {
+    margin-left: 0;
+    margin-right: 0;
+
+    padding: 2rem;
+    &::nth-child(odd) {
+        background-color: white;
     }
 }
 
@@ -30,9 +56,17 @@ img.center {
     box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
 }
 
-.book-section:nth-child(2n) {
-    background-color: $light-yellow;
+.upvotes {
+    position: absolute;
+    bottom: 4rem;
 }
-.book-section:nth-child(2n+1) {
-    background-color: white;
+
+.upvotes-count {
+    line-height: 2.4rem;
+    padding: 2rem;
+}
+
+.rating {
+    font-size: 1.2rem;
+    font-weight: 200;
 }

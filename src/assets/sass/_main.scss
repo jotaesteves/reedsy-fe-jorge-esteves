@@ -1,9 +1,19 @@
 .main {
     background-color: white;
     border-radius: 1rem;
-    box-shadow: darken($color: #000000, $amount: 0);
+    -webkit-box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
+    box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
     text-align: left;
     margin-bottom: 20px;
+    position: relative;
+
+    .container > h1 {
+        margin-bottom: 1rem;
+        padding: 2.1rem;
+        font-size: 2.4rem;
+        font-weight: 400;
+    }
 }
 
 .image-container{
@@ -61,6 +71,10 @@ box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
     }
 }
 
+.top-voted > h2 {
+    padding: 2.2rem;
+}
+
 .books-list {
     position: relative;
 
@@ -94,6 +108,7 @@ box-shadow: -2px 6px 18px -4px rgba(0,0,0,0.75);
 
         border: 2px solid $primary;
         color: $primary;
+        background-color: white;
         text-align: center;
         line-height: 1rem;
         font-size: 1.4rem;
